@@ -3,4 +3,9 @@ cd /home/owner/workspace/tmp/astro_test
 
 -----------------------------------
 
+npm run dev
+
+-----------------------------------
+
+http://localhost:4321/
 
