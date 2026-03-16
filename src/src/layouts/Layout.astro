@@ -1,7 +1,7 @@
 ---
 import '@/css/app.css';
-import AppClient from '@/lib/app-client.astro';
-import Nav from './parts/Nav.astro';
+import SetupClient from '@/services/app/setup-client.astro';
+import Nav from './partials/Nav.astro';
 ---
 
 <!doctype html>
@@ -12,7 +12,7 @@ import Nav from './parts/Nav.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
-    <AppClient />
+    <SetupClient />
   </head>
   <body
     class="bg-gradient-to-br from-indigo-100 via-white to-blue-100 min-h-screen"

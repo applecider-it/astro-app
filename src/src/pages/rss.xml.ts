@@ -1,12 +1,11 @@
 import rss from '@astrojs/rss';
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
-import type { Post } from '@/types/types';
+import { getPosts } from '@/services/post/post';
 
 // RSS生成用
 export const GET: APIRoute = async (context) => {
 
-  const posts: Post[] = await getCollection('post');
+  const posts = await getPosts();
 
   return rss({
     title: 'サイトブログ',
