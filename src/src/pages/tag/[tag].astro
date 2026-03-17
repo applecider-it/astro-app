@@ -1,18 +1,31 @@
 ---
 import Layout from '@/components/layouts/Layout.astro';
 import { getTags, getTagPosts } from '@/services/post/tag';
+import type { GetStaticPaths } from 'astro';
+import type { Post } from '@/types/types';
 
-const { tag } = Astro.params;
-
-const posts = await getTagPosts(tag);
-
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const tags = await getTags();
 
-  return tags.map((tag) => ({
-    params: { tag },
-  }));
+  const data = [];
+
+  for (const tag of tags) {
+    const posts = await getTagPosts(tag);
+    data.push({
+      params: { tag },
+      props: { posts },
+    });
+  }
+
+  return data;
+};
+
+interface Props {
+  posts: Post[];
 }
+
+const { tag } = await Astro.params;
+const { posts } = (await Astro.props) as Props;
 ---
 
 <Layout>

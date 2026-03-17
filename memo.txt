@@ -10,9 +10,12 @@ astro: 4321
 
 -----------------------------------
 
+foreman start
+
+-----------------------------------
+
 npm run dev
 
-foreman start
 
 -----------------------------------
 
@@ -24,8 +27,11 @@ http://localhost:4321/rss.xml
 
 ビルド
 
+cd /home/owner/workspace/tmp/astro_test/src
+
 npm run build
 
+-----------------------------------
 
 確認
 
