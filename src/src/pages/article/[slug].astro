@@ -39,7 +39,7 @@ const { Content } = await post.render();
     <div class="flex gap-2 mb-10">
       {
         post.data.tags?.map((tag) => (
-          <a href={`/tag/${tag}/`}>
+          <a href={`/tag/${tag}/1`}>
             <span class="app-tag">#{tag}</span>
           </a>
         ))

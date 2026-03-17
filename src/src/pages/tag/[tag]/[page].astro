@@ -1,31 +1,32 @@
 ---
 import Layout from '@/components/layouts/Layout.astro';
+import Pagination from '@/components/nav/Pagination.astro';
 import { getTags, getTagPosts } from '@/services/post/tag';
-import type { GetStaticPaths } from 'astro';
+import type { GetStaticPaths, Page } from 'astro';
 import type { Post } from '@/types/types';
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const tags = await getTags();
 
   const data = [];
 
   for (const tag of tags) {
     const posts = await getTagPosts(tag);
-    data.push({
+
+    const list = paginate(posts, {
       params: { tag },
-      props: { posts },
+      pageSize: 2,
     });
+
+    data.push(...list);
   }
 
   return data;
 };
 
-interface Props {
-  posts: Post[];
-}
-
 const { tag } = await Astro.params;
-const { posts } = (await Astro.props) as Props;
+
+const { page } = Astro.props as { page: Page<Post> };
 ---
 
 <Layout>
@@ -36,7 +37,7 @@ const { posts } = (await Astro.props) as Props;
 
     <ul class="space-y-6">
       {
-        posts.map((post) => (
+        page.data.map((post) => (
           <li class="border-b border-gray-200 pb-4">
             <a href={`/article/${post.slug}/`} class="block group">
               <h3 class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition">
@@ -47,5 +48,7 @@ const { posts } = (await Astro.props) as Props;
         ))
       }
     </ul>
+
+    <Pagination page={page} baseUri={`/tag/${tag}`} />
   </div>
 </Layout>
