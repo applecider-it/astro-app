@@ -1,13 +1,15 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Pagination from '@/components/Pagination.astro';
 import type { GetStaticPaths, Page } from 'astro';
 import type { Post } from '@/types/types';
 import { getPosts } from '@/services/post/post';
+import { toLocaleString } from '@/services/data/datetime';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const posts = await getPosts();
 
-  return paginate(posts, { pageSize: 2 });
+  return paginate(posts, { pageSize: 5 });
 };
 
 const { page } = Astro.props as { page: Page<Post> };
@@ -27,7 +29,7 @@ const { page } = Astro.props as { page: Page<Post> };
             <h2 class="text-xl font-semibold mb-2">{post.data.title}</h2>
 
             <p class="text-sm text-gray-500 mb-4">
-              {post.data.date.toLocaleDateString()}
+              {toLocaleString(post.data.date)}
             </p>
 
             <p class="text-gray-600 mb-4">{post.data.description}</p>
@@ -43,49 +45,5 @@ const { page } = Astro.props as { page: Page<Post> };
     </div>
   </section>
 
-  <nav class="flex justify-center items-center gap-3 mt-16">
-    {
-      page.url.prev && (
-        <a
-          href={page.url.prev}
-          class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100 transition"
-        >
-          ← Prev
-        </a>
-      )
-    }
-
-    {
-      Array.from({ length: page.lastPage }).map((_, i) => {
-        const pageNumber = i + 1;
-        const url = `/post/${pageNumber}`;
-        const isActive = pageNumber === page.currentPage;
-
-        return (
-          <a
-            href={url}
-            class={`px-4 py-2 rounded-xl transition
-        ${
-          isActive
-            ? 'bg-black text-white shadow'
-            : 'border border-gray-200 hover:bg-gray-100'
-        }`}
-          >
-            {pageNumber}
-          </a>
-        );
-      })
-    }
-
-    {
-      page.url.next && (
-        <a
-          href={page.url.next}
-          class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100 transition"
-        >
-          Next →
-        </a>
-      )
-    }
-  </nav>
+  <Pagination page={page} baseUri="/post" />
 </Layout>
