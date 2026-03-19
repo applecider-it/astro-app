@@ -35,7 +35,9 @@ npm run build
 
 確認
 
-php -S localhost:4322 -t dist
+cd /home/owner/workspace/tmp/astro_test/src/dist
+
+serve . -l 4322
 
 http://localhost:4322/
 
