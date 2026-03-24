@@ -1,5 +1,5 @@
 
-cd /home/owner/workspace/tmp/astro_test/src
+cd ~/workspace/github/astro-app/src
 
 -----------------------------------
 
@@ -27,7 +27,7 @@ http://localhost:4321/rss.xml
 
 ビルド
 
-cd /home/owner/workspace/tmp/astro_test/src
+cd ~/workspace/github/astro-app/src
 
 npm run build
 
@@ -35,7 +35,7 @@ npm run build
 
 確認
 
-cd /home/owner/workspace/tmp/astro_test/src/dist
+cd ~/workspace/github/astro-app/src/dist
 
 serve . -l 4322
 
