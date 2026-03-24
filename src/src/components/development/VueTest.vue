@@ -23,7 +23,7 @@ const handleSubmit = async (e: Event) => {
 
   console.log(data);
 
-  const url = `${props.apiHost}/`;
+  const url = `${props.apiHost}/comments/store`;
 
   const res = await axios.post(url, data);
 
@@ -39,7 +39,7 @@ const handleSubmit = async (e: Event) => {
 const setList = async () => {
   console.log(props.apiHost);
 
-  const url = `${props.apiHost}/`;
+  const url = `${props.apiHost}/comments`;
 
   const res = await axios.get(url);
 

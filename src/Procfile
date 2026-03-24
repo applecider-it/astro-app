@@ -1,2 +1,2 @@
 astro: npm run dev
-prod: php -S localhost:4322 -t dist
+prod: serve ./dist -l 4322
