@@ -25,6 +25,12 @@ http://localhost:4321/rss.xml
 
 -----------------------------------
 
+セットアップ
+
+npm ci
+
+-----------------------------------
+
 ビルド
 
 cd ~/workspace/github/astro-app/src
