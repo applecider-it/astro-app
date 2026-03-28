@@ -29,6 +29,8 @@ http://localhost:4321/rss.xml
 
 npm ci
 
+cp .env.example .env
+
 -----------------------------------
 
 ビルド
