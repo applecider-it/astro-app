@@ -11,6 +11,10 @@
 
 `astro:content`を使って管理。
 
+## API連携
+
+Vueのページで`astro-app-worker`のAPIと連携しています。
+
 ## その他
 
 Astroは、シンプルに利用するべき。
