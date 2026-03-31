@@ -6,7 +6,7 @@ cd ~/workspace/github/astro-app/src
 port
 
 astro: 4321
-確認用php: 4322
+確認用サーバー: 4322
 
 -----------------------------------
 
