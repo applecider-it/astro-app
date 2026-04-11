@@ -52,3 +52,23 @@ http://localhost:4322/
 http://localhost:4322/rss.xml
 
 http://localhost:4322/sitemap-index.xml
+
+-----------------------------------
+
+Cloudflare Pages
+
+ビルド設定
+
+Build command:
+
+npm run build
+
+Build output:
+
+dist
+
+Root directory:
+
+src
+
+
