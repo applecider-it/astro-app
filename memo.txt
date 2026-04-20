@@ -43,9 +43,11 @@ npm run build
 
 確認
 
-cd ~/workspace/github/astro-app/src/dist
+cd ~/workspace/github/astro-app/src
 
-serve . -l 4322
+php -S localhost:4322 -t ./dist
+
+serve ./dist -l 4322
 
 http://localhost:4322/
 
