@@ -2,7 +2,7 @@
 import CommentTest from './vue-test/CommentTest.vue';
 import AuthTest from './vue-test/AuthTest.vue';
 
-const sectionClass = "border-4 p-5"
+const sectionClass = "border-4 p-5 border-gray-400 rounded-lg"
 </script>
 
 <template>
