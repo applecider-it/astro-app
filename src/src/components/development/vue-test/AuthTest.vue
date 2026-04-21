@@ -28,6 +28,17 @@ const handleLogout = async (e: Event) => {
   console.log(res);
 };
 
+/** Google認証 */
+const handleGoogle = async (e: Event) => {
+  const host = window.App.config.apiHost;
+
+  const url = `${host}/auth/google`;
+
+  console.log(url);
+
+  location.href = url;
+};
+
 // 初期化時
 onMounted(async () => {});
 </script>
@@ -51,6 +62,12 @@ onMounted(async () => {});
     <div class="space-x-5">
       <button type="button" @click="handleLogout" class="app-btn-primary">
         Logout
+      </button>
+    </div>
+
+    <div class="space-x-5">
+      <button type="button" @click="handleGoogle" class="app-btn-primary">
+        Google認証
       </button>
     </div>
   </div>
