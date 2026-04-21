@@ -1,0 +1,11 @@
+---
+const apiHost = import.meta.env.APP_API_HOST;
+---
+
+<script define:vars={{ apiHost }}>
+  window.App = {
+    config: { apiHost }
+  };
+
+  console.log(window.App);
+</script>
