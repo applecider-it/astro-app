@@ -15,6 +15,10 @@
 
 Vueのページで`astro-app-worker`のAPIと連携しています。
 
+- コメント
+- Twitter
+- 認証
+
 ## その他
 
 Astroは、シンプルに利用するべき。
