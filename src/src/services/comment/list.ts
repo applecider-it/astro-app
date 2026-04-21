@@ -3,7 +3,7 @@ import { getApiUrl } from '@/services/api/rest';
 
 /** コメント一覧 */
 export async function getComments() {
-  const url = getApiUrl('/comments');
+  const url = getApiUrl('/comment');
 
   const res = await axios.get(url);
 

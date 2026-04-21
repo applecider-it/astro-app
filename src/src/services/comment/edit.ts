@@ -8,7 +8,7 @@ export async function storeComment(author: string, content: string) {
     content,
   };
 
-  const url = getApiUrl('/comments/store');
+  const url = getApiUrl('/comment/store');
 
   const res = await axios.post(url, data);
 }
