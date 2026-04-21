@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { getApiUrl } from '@/services/api/rest';
 
-interface Props {
-  apiHost: string;
-}
-
-const props = defineProps<Props>();
+import { getComments } from '@/services/comment/list';
+import { storeComment } from '@/services/comment/edit';
 
 const author = ref<string>('');
 const content = ref<string>('');
@@ -17,18 +12,7 @@ const comments = ref<any[]>();
 const handleSubmit = async (e: Event) => {
   e.preventDefault();
 
-  const data = {
-    author: author.value,
-    content: content.value,
-  };
-
-  console.log(data);
-
-  const url = getApiUrl('/comments/store');
-
-  const res = await axios.post(url, data);
-
-  console.log(res.data);
+  await storeComment(author.value, content.value);
 
   author.value = '';
   content.value = '';
@@ -38,15 +22,9 @@ const handleSubmit = async (e: Event) => {
 
 /** リスト設定 */
 const setList = async () => {
-  console.log(props.apiHost);
+  const rows = await getComments();
 
-  const url = getApiUrl('/comments');
-
-  const res = await axios.get(url);
-
-  console.log(res.data);
-
-  comments.value = res.data;
+  comments.value = rows;
 };
 
 // 初期化時

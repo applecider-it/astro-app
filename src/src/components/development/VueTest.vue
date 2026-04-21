@@ -17,7 +17,7 @@ const sectionClass = "border-4 p-5"
       <AuthTest :apiHost="apiHost" />
     </div>
     <div :class="sectionClass">
-      <CommentTest :apiHost="apiHost" />
+      <CommentTest />
     </div>
   </div>
 </template>
