@@ -12,4 +12,6 @@ export async function storeTweet(content: string) {
   const res = await axios.post(url, data, {
     withCredentials: true,
   });
+
+  return res.data;
 }

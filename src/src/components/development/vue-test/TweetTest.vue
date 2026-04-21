@@ -11,7 +11,9 @@ const tweets = ref<any[]>();
 const handleSubmit = async (e: Event) => {
   e.preventDefault();
 
-  await storeTweet(content.value);
+  const res = await storeTweet(content.value);
+
+  console.log('handleSubmit res', res);
 
   content.value = '';
 
