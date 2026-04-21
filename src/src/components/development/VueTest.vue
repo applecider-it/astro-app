@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CommentTest from './vue-test/CommentTest.vue';
+import TweetTest from './vue-test/TweetTest.vue';
 import AuthTest from './vue-test/AuthTest.vue';
 
 const sectionClass = "border-4 p-5 border-gray-400 rounded-lg"
@@ -9,6 +10,9 @@ const sectionClass = "border-4 p-5 border-gray-400 rounded-lg"
   <div class="mx-auto space-y-10 p-5">
     <div :class="sectionClass">
       <AuthTest />
+    </div>
+    <div :class="sectionClass">
+      <TweetTest />
     </div>
     <div :class="sectionClass">
       <CommentTest />
