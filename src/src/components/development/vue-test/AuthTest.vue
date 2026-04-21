@@ -1,60 +1,31 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
-
-interface Props {
-  apiHost: string;
-}
-
-const props = defineProps<Props>();
+import { getMe, sendLogin, sendLogout } from '@/services/user/auth';
 
 const email = ref<string>('test@localhost.com');
 const password = ref<string>('testtest');
 
 /** 認証ユーザー */
 const handleMe = async (e: Event) => {
-  const url = `${props.apiHost}/auth/me`;
+  const res = await getMe();
 
-  const res = await axios.get(url, {
-    withCredentials: true,
-  });
-
-  console.log(res.data);
+  console.log(res);
 };
 
 /** ログイン処理 */
 const handleSubmit = async (e: Event) => {
   e.preventDefault();
 
-  const data = {
-    email: email.value,
-    password: password.value,
-  };
+  const res = await sendLogin(email.value, password.value);
 
-  console.log(data);
-
-  const url = `${props.apiHost}/auth/login`;
-
-  const res = await axios.post(url, data, {
-    withCredentials: true,
-  });
-
-  console.log(res.data);
+  console.log(res);
 };
 
 /** ログアウト */
 const handleLogout = async (e: Event) => {
-  const url = `${props.apiHost}/auth/logout`;
+  const res = await sendLogout();
 
-  const res = await axios.post(
-    url,
-    {},
-    {
-      withCredentials: true,
-    },
-  );
-
-  console.log(res.data);
+  console.log(res);
 };
 
 // 初期化時

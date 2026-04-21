@@ -1,12 +1,10 @@
 ---
 import Layout from '@/components/layouts/Layout.astro';
 import VueTest from '@/components/development/VueTest.vue';
-
-const apiHost = import.meta.env.APP_API_HOST;
 ---
 
 <Layout>
   <div class="my-10">
-    <VueTest client:load apiHost={apiHost} />
+    <VueTest client:load />
   </div>
 </Layout>
