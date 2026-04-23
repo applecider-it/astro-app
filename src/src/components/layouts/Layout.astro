@@ -3,6 +3,7 @@ import '@/assets/css/app.css';
 import SetupClient from '@/services/app/setup-client.astro';
 import SetupClientVariables from '@/services/app/setup-client-variables.astro';
 import Nav from './partials/Nav.astro';
+import Footer from './partials/Footer.astro';
 ---
 
 <!doctype html>
@@ -19,10 +20,16 @@ import Nav from './partials/Nav.astro';
   <body
     class="bg-gradient-to-br from-indigo-100 via-white to-blue-100 min-h-screen"
   >
-    <Nav />
+    <div class="flex flex-col min-h-screen">
+      <div class="flex-grow">
+        <Nav />
 
-    <div class="pb-40">
-      <slot />
+        <div class="pb-40">
+          <slot />
+        </div>
+      </div>
+
+      <Footer />
     </div>
   </body>
 </html>

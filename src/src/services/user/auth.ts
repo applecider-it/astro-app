@@ -29,11 +29,18 @@ export const sendLogin = async (email: string, password: string) => {
 
   const url = getApiUrl('/auth/login');
 
-  const res = await axios.post(url, data, {
-    withCredentials: true,
-  });
+  try {
+    const res = await axios.post(url, data, {
+      withCredentials: true,
+    });
 
-  return res.data;
+    return res.data;
+  } catch (err: any) {
+    if (err.response && err.response.status === 401) {
+      alert('ログインできません。');
+    }
+    throw err;
+  }
 };
 
 /** ログアウト */
