@@ -5,6 +5,8 @@ export function createMyRouter() {
     history: createWebHashHistory(),
     routes: [
       { path: '/', component: () => import('./pages/Home.vue') },
+      { path: '/auth', component: () => import('./pages/Auth.vue') },
+      { path: '/tweet', component: () => import('./pages/Tweet.vue') },
       { path: '/development', component: () => import('./pages/Development.vue') },
     ],
   })

@@ -9,9 +9,18 @@ export async function storeTweet(content: string) {
 
   const url = getApiUrl('/tweet/store');
 
-  const res = await axios.post(url, data, {
-    withCredentials: true,
-  });
+  try {
+    const res = await axios.post(url, data, {
+      withCredentials: true,
+    });
 
-  return res.data;
+    return res.data;
+  } catch (err: any) {
+    if (err.response && err.response.status === 401) {
+      alert('ログインが必要です。');
+      throw err;
+    } else {
+      throw err;
+    }
+  }
 }

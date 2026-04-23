@@ -1,15 +1,23 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { getApiUrl } from '@/services/api/rest';
 
 /** 認証ユーザー */
 export const getMe = async () => {
   const url = getApiUrl('/auth/me');
 
-  const res = await axios.get(url, {
-    withCredentials: true,
-  });
+  try {
+    const res = await axios.get(url, {
+      withCredentials: true,
+    });
 
-  return res.data;
+    return res.data;
+  } catch (err: any) {
+    if (err.response && err.response.status === 401) {
+      return null;
+    } else {
+      throw err;
+    }
+  }
 };
 
 /** ログイン処理 */
