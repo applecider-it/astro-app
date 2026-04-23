@@ -11,6 +11,11 @@
           >Tweet</router-link
         >
       </div>
+      <div>
+        <router-link to="/comment" class="app-link-normal"
+          >Comment</router-link
+        >
+      </div>
       <div class="pt-10">
         <router-link to="/development" class="app-link-normal"
           >development</router-link

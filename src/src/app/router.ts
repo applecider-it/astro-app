@@ -7,6 +7,7 @@ export function createMyRouter() {
       { path: '/', component: () => import('./pages/Home.vue') },
       { path: '/auth', component: () => import('./pages/Auth.vue') },
       { path: '/tweet', component: () => import('./pages/Tweet.vue') },
+      { path: '/comment', component: () => import('./pages/Comment.vue') },
       { path: '/development', component: () => import('./pages/Development.vue') },
     ],
   })
