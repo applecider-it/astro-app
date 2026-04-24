@@ -13,11 +13,12 @@
 
 ## API連携
 
-Vueのページで`astro-app-worker`のAPIと連携しています。
+`astro-app-worker`のAPIと連携しています。
 
 - コメント
 - Twitter
 - 認証
+- Chat
 
 ## その他
 
