@@ -16,8 +16,7 @@
     "astro": "^5.17.1",
     "axios": "^1.13.6",
     "swiper": "^12.1.2",
-    "vue": "^3.5.29",
-    "vue-router": "^5.0.6"
+    "vue": "^3.5.29"
   },
   "devDependencies": {
     "@types/alpinejs": "^3.13.11",

@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { getMe, sendLogin, sendLogout } from '@/services/user/auth';
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
 
 const email = ref<string>('test@localhost.com');
 const password = ref<string>('testtest');
@@ -31,8 +28,7 @@ const handleSubmit = async (e: Event) => {
   console.log(res);
 
   if (res.ok) {
-    setup();
-    router.push('/');
+    location.href = '/';
   }
 };
 

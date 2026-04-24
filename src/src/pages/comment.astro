@@ -1,0 +1,10 @@
+---
+import Layout from '@/components/layouts/Layout.astro';
+import CommentArea from '@/components/comment/CommentArea.vue';
+---
+
+<Layout>
+  <div class="mx-auto p-5">
+    <CommentArea client:load />
+  </div>
+</Layout>
