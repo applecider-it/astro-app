@@ -7,7 +7,7 @@ export default class ChatClient {
   private setMessage!: (msg: string) => void;
 
   constructor(argSetMessage: (msg: string) => void) {
-    this.ws = new WebSocket(`${window.App.config.apiHost}/chat/ws`);
+    this.ws = new WebSocket(`${window.App.config.apiHost}/chat/ws/room1`);
     console.log('init WebSocket')
 
     this.ws.onopen = () => console.log('connected');
