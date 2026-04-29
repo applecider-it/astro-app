@@ -1,5 +1,13 @@
 # Astro WEBサイト
 
+## 機能
+
+- コメント
+- Twitter
+- 認証
+- Chat
+- ブログ
+
 ## 追加した外部ツール
 
 - tailwind3
@@ -10,12 +18,3 @@
 ## ブログ
 
 `astro:content`を使って管理。
-
-## API連携
-
-`astro-app-worker`のAPIと連携しています。
-
-- コメント
-- Twitter
-- 認証
-- Chat

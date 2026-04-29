@@ -86,6 +86,7 @@ VALUES ('test@localhost.com', 'テスト', '37268335dd6931045bdcdf92623ff819a642
 
 npx wrangler d1 execute DB --local --command "SELECT * FROM users"
 
+npx wrangler d1 execute DB --local --command "SELECT name FROM sqlite_master WHERE type = 'table';"
 
 -----------------------------------
 
@@ -137,13 +138,26 @@ npx wrangler d1 execute DB --remote --command "SELECT * FROM comments"
 DB実行
 
 
+ローカル
+
 npx wrangler d1 execute DB --local --command "SELECT * FROM comments"
+
+サーバー
 
 npx wrangler d1 execute DB --remote --command "SELECT * FROM comments"
 
 
+----
+
 マイグレーション
 
+
+ローカル
+
+npx wrangler d1 migrations apply DB --local
+
+
+サーバー
 
 npx wrangler d1 migrations apply DB --remote
 
