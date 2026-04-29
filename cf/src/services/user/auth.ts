@@ -40,7 +40,7 @@ export async function startAuth(
     user,
     exp: Date.now() + 1000 * 60 * 60 * 24,
   };
-  const token = await encryptSession(ret);
+  const token = await encryptSession(c, ret);
 
   console.log({ token });
 

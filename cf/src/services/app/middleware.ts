@@ -31,7 +31,7 @@ export async function auth(c: Context<AppHonoType>, next: Function) {
 
   try {
     // 暗号化された Cookie を復号してセッション情報取得
-    const data = await decryptSession(token)
+    const data = await decryptSession(c, token)
 
     // セッション期限切れチェック
     // exp はミリ秒想定（Date.now() と比較）
