@@ -23,7 +23,7 @@ npm run dev
 
 foreman start
 
------------------------------------
+----
 
 http://localhost:4321/
 
@@ -33,9 +33,11 @@ http://localhost:4321/rss.xml
 
 API
 
-cd ~/workspace/github/astro-app/sb
+cd ~/workspace/github/astro-app/cf
 
 pnpm dev
+
+----
 
 http://localhost:8787/
 
@@ -62,7 +64,7 @@ cp .env.example .env
 API
 
 
-cd ~/workspace/github/astro-app/sb
+cd ~/workspace/github/astro-app/cf
 
 npm ci
 
@@ -87,13 +89,14 @@ npx wrangler d1 execute DB --local --command "SELECT * FROM users"
 
 -----------------------------------
 
-ビルド
+Webサイト ビルド
+
 
 cd ~/workspace/github/astro-app/src
 
 npm run build
 
------------------------------------
+----
 
 確認
 
@@ -116,7 +119,7 @@ API操作
 
 
 
-cd ~/workspace/github/astro-app/sb
+cd ~/workspace/github/astro-app/cf
 
 
 接続
@@ -213,7 +216,7 @@ npx wrangler versions upload
 
 Root directory:
 
-/src
+/cf
 
 
 ----
