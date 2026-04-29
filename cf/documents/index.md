@@ -1,4 +1,4 @@
-# astro-app用のAPIマイクロサービス
+# APIマイクロサービス
 
 - [API](./api.md)
 - [DB](./db.md)
