@@ -2,7 +2,8 @@
 
 ## 動作環境
 
-- croudflare workers
+- Croudflare workers
+- Hono
 
 ## メイン
 
