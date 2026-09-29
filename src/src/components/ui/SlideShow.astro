@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+
+const { images } = Astro.props;
+---
+
+<div class="swiper-container">
+  <div class="swiper app-feature-swiper1">
+    <div class="swiper-wrapper">
+      {
+        images.map((img: any) => (
+          <div class="swiper-slide">
+            <Image src={img} alt="" class="mx-auto" />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="swiper-pagination app-feature-swiper1-pagination"></div>
+  </div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import 'swiper/css/bundle';
+  import { Autoplay, Pagination } from 'swiper/modules';
+
+  console.log('SlideShow setup');
+
+  const swiper = new Swiper('.app-feature-swiper1', {
+    modules: [Autoplay, Pagination],
+    loop: true,
+    speed: 1000,
+
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.app-feature-swiper1-pagination',
+      clickable: true,
+    },
+  });
+</script>

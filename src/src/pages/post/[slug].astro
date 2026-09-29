@@ -1,0 +1,53 @@
+---
+import Layout from '@/components/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { Post } from '@/types/types';
+import { toLocaleString } from '@/services/data/datetime';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts: Post[] = await getCollection('post');
+
+  return posts.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+};
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props as Props;
+
+// Markdown をレンダリング
+const { Content } = await post.render();
+---
+
+<Layout>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-4">
+      {post.data.title}
+    </h1>
+
+    <p class="text-gray-500 mb-6">
+      {toLocaleString(post.data.date)}
+    </p>
+
+    <div class="flex gap-2 mb-10">
+      {
+        post.data.tags?.map((tag) => (
+          <a href={`/tag/${tag}/1`}>
+            <span class="app-tag">#{tag}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="app-post-content-container max-w-none">
+      <Content />
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,18 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <!-- 赤い円 -->
+  <circle cx="256" cy="256" r="256" fill="rgba(36, 104, 87, 1)"/>
+
+  <!-- R の文字（中央配置） -->
+  <text
+    x="50%"
+    y="50%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    font-size="280"
+    font-family="Arial, sans-serif"
+    fill="rgba(207, 202, 202, 1)"
+    font-weight="bold"
+  >
+    A
+  </text>
+</svg>

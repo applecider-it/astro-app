@@ -1,0 +1,10 @@
+---
+import Layout from '@/components/layouts/Layout.astro';
+import TweetArea from '@/components/chat/ChatArea.vue';
+---
+
+<Layout>
+  <div class="mx-auto p-5">
+    <TweetArea client:load />
+  </div>
+</Layout>

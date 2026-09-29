@@ -1,0 +1,10 @@
+---
+import Layout from '@/components/layouts/Layout.astro';
+import AuthArea from '@/components/user/AuthArea.vue';
+---
+
+<Layout>
+  <div class="mx-auto p-5">
+    <AuthArea client:load />
+  </div>
+</Layout>

@@ -1,0 +1,22 @@
+
+npm create astro@latest
+
+npm install -D tailwindcss@^3.4.18 postcss autoprefixer
+
+npx tailwindcss init -p
+
+npm install @astrojs/rss
+
+npm install swiper
+
+npx astro add vue
+
+npm install alpinejs
+
+npm i --save-dev @types/alpinejs
+
+npm install axios
+
+npm install vue-router
+
+npm uninstall vue-router

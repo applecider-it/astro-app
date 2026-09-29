@@ -1,0 +1,257 @@
+
+cd ~/workspace/github/astro-app/src
+
+-----------------------------------
+
+port
+
+astro: 4321
+確認用サーバー: 4322
+api: 8787
+
+-----------------------------------
+
+Webサイト
+
+cd ~/workspace/github/astro-app/src
+
+npm run dev
+
+----
+
+確認用サーバーも起動
+
+foreman start
+
+----
+
+http://localhost:4321/
+
+http://localhost:4321/rss.xml
+
+-----------------------------------
+
+API
+
+cd ~/workspace/github/astro-app/cf
+
+pnpm dev
+
+----
+
+http://localhost:8787/
+
+
+http://localhost:8787/development/test
+
+-----------------------------------
+
+セットアップ
+
+----
+
+Webサイト
+
+cd ~/workspace/github/astro-app/src
+
+npm ci
+
+cp .env.example .env
+
+
+----
+
+API
+
+
+cd ~/workspace/github/astro-app/cf
+
+npm ci
+
+必要な場合
+  npm install -g pnpm
+
+
+npx wrangler d1 migrations apply DB --local
+
+
+ユーザー作成
+
+npx wrangler d1 execute DB --local --command="
+INSERT INTO users (email, name, password_hash)
+VALUES ('test@localhost.com', 'テスト', '37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578');
+"
+
+確認
+
+npx wrangler d1 execute DB --local --command "SELECT * FROM users"
+
+npx wrangler d1 execute DB --local --command "SELECT name FROM sqlite_master WHERE type = 'table';"
+
+-----------------------------------
+
+Webサイト ビルド
+
+
+cd ~/workspace/github/astro-app/src
+
+npm run build
+
+----
+
+確認
+
+cd ~/workspace/github/astro-app/src
+
+php -S localhost:4322 -t ./dist
+
+serve ./dist -l 4322
+
+http://localhost:4322/
+
+http://localhost:4322/rss.xml
+
+http://localhost:4322/sitemap-index.xml
+
+
+-----------------------------------
+
+API操作
+
+
+
+cd ~/workspace/github/astro-app/cf
+
+
+接続
+
+npx wrangler login
+
+
+確認
+
+npx wrangler d1 execute DB --remote --command "SELECT * FROM comments"
+
+
+----
+
+DB実行
+
+
+ローカル
+
+npx wrangler d1 execute DB --local --command "SELECT * FROM comments"
+
+サーバー
+
+npx wrangler d1 execute DB --remote --command "SELECT * FROM comments"
+
+
+----
+
+マイグレーション
+
+
+ローカル
+
+npx wrangler d1 migrations apply DB --local
+
+
+サーバー
+
+npx wrangler d1 migrations apply DB --remote
+
+----
+
+デプロイ
+
+git push
+
+OR
+
+pnpm run deploy
+
+
+----
+
+動作確認
+
+
+curl -X GET http://localhost:8787/comments
+
+curl -X POST http://localhost:8787/comments/store \
+  -H "Content-Type: application/json" \
+  -d '{
+    "author": "てすと",
+    "content": "てすとてすとてすとてすと"
+  }'
+
+
+
+-----------------------------------
+
+Cloudflare Pages
+
+ビルド設定
+
+Build command:
+
+npm run build
+
+Build output:
+
+dist
+
+Root directory:
+
+src
+
+
+-----------------------------------
+
+Cloudflare Workers
+
+----
+
+ビルド設定
+
+
+Build command:
+
+空
+
+Deploy command:
+
+npx wrangler deploy
+
+Version command:
+
+npx wrangler versions upload
+
+Root directory:
+
+/cf
+
+
+----
+
+環境変数
+
+
+変数はSecretにしないと、いつの間にか消えている
+
+-----------------------------------
+
+Google認証
+
+
+セットアップ
+
+・Google Cloud コンソール
+・プロジェクト
+・APIとサービス
+・OAuth
+・Webクライアント
+  「承認済みのリダイレクト URI」開発環境、本番環境両方のURLを設定
+
+クライアント シークレットは、作成時しか表示されない

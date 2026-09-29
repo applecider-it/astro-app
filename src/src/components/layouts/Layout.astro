@@ -1,0 +1,35 @@
+---
+import '@/assets/css/app.css';
+import SetupClient from '@/services/app/setup-client.astro';
+import SetupClientVariables from '@/services/app/setup-client-variables.astro';
+import Nav from './partials/Nav.astro';
+import Footer from './partials/Footer.astro';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <SetupClient />
+    <SetupClientVariables />
+  </head>
+  <body
+    class="bg-gradient-to-br from-indigo-100 via-white to-blue-100 min-h-screen"
+  >
+    <div class="flex flex-col min-h-screen">
+      <div class="flex-grow">
+        <Nav />
+
+        <div class="pb-40">
+          <slot />
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
